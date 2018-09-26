@@ -19,25 +19,21 @@ class BooksApp extends React.Component {
 
   moveShelf = (book, shelf) => {
     BooksAPI.update(book, shelf);
-
     BooksAPI.getAll().then((books) => {
       this.setState({ books: books })
     })
   }
 
-
   render() {
     
     return (
       <div className="app">
-
         <Route exact path="/" render={() => (
             <MainPage 
             books={this.state.books}
             moveShelf={this.moveShelf}
             />
         )} />
-
         <Route path="/search" render={() => (
           <SearchPage
             moveShelf={this.moveShelf}
